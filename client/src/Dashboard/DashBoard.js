@@ -41,8 +41,8 @@ function DashBoard() {
         ])
         setOptions({
             chart: {
-                title: "Company Performance",
-                subtitle: "Sales, Expenses, and Profit: 2014-2017",
+                title: "Compairson Between avg Intenity Likelihood and Relevance",
+                subtitle: "Bar Graph of All these Three avg Value Hover To see Detials",
             },
         })
     }
@@ -61,9 +61,14 @@ function DashBoard() {
         }
         setVal2(newData)
         setOptions2({
-            chart: {
-                title: "Region Wise Intensity Likelihood and Relevance",
-                subtitle: "Compairson between These Three Value with Top 10 Country Data",
+            title: "Top 7 Region Wise Avg Intensity Likelihood and Relevance",
+            chartArea: { width: "50%" },
+            hAxis: {
+                title: "Avg",
+                minValue: 0,
+            },
+            vAxis: {
+                title: "Region",
             },
         })
         // console.log(top5Ids);
@@ -88,14 +93,14 @@ function DashBoard() {
         }
         setVal3(newData)
         setOptions3({
-            title: "Section Wise Intensity Likelihood and Relevance",
+            title: "Top 5 Sector Wise Intensity Likelihood and Relevance",
             chartArea: { width: "50%" },
             hAxis: {
-                title: "Total Population",
+                title: "Avg",
                 minValue: 0,
             },
             vAxis: {
-                title: "City",
+                title: "Sector",
             },
         })
         // console.log(top5Ids);
@@ -116,16 +121,14 @@ function DashBoard() {
         }
         setVal4(newData)
         setOptions4({
-            title: "Topic Wise Intensity",
-            chartArea: { width: "50%" },
-            hAxis: {
-                title: "Total Population",
-                minValue: 0,
+            // Material design options
+            chart: {
+              title: "How Intensity is Speared Based On Topic",
+              subtitle: "Here We are taking top intensity topic To Show data Intensity",
             },
-            vAxis: {
-                title: "City",
-            },
-        })
+            hAxis: { title: "Hours Studied" },
+            vAxis: { title: "Grade" },
+          })
         // console.log(top5Ids);
     }
 
@@ -137,7 +140,11 @@ function DashBoard() {
         // Get the top 5 documents and extract their _id fields
         const topTopic = sortedData.slice(0, 15).map(item => item);
         // console.log(topTopic[0].region);
-        let newData = [["Country", "Intensity", "Likelihood", "Region", "Relevance"]];
+        let newData = [
+            ["Country", "Intensity", "Likelihood", "Region", "Relevance"],
+            ["Unknown", 14.9, 4.5, "Asia", 4]
+
+        ];
         for (let i = 0; i < topTopic.length; i++) {
             const element = [topTopic[i]._id, topTopic[i].avg_intensity, topTopic[i].avg_likelihood, topTopic[i].region, topTopic[i].avg_relevance];
             newData.push(element);
@@ -145,10 +152,10 @@ function DashBoard() {
         setVal5(newData)
         setOptions5({
             title:
-                "Correlation between life expectancy, fertility rate " +
-                "and population of some world countries (2010)",
-            hAxis: { title: "Life Expectancy" },
-            vAxis: { title: "Fertility Rate" },
+                "Correlation between Intensity and Likelihood " +
+                " of with some high intensity countries",
+            hAxis: { title: "Intensity" },
+            vAxis: { title: "Likelihood" },
             bubble: { textStyle: { fontSize: 11 } },
         })
         // console.log(top5Ids);
@@ -165,8 +172,8 @@ function DashBoard() {
         setVal6(newData)
         setOptions6({
             chart: {
-                title: "Region Wise Intensity Likelihood and Relevance",
-                subtitle: "Compairson between These Three Value with Top 10 Country Data",
+                title: "Number Of Data Publiced Each Year",
+                subtitle: "some data year is not defined taken as Unknown",
             },
         })
         // console.log(top5Ids);
@@ -206,22 +213,22 @@ function DashBoard() {
                             <Chart
                                 className='leftpart1'
                                 chartType="Bar"
-                                width="100%"
-                                height="300px"
+                                width="95%"
+                                height="400px"
                                 data={val}
                                 options={options}
                             />
 
                             <Chart
                                 chartType="Bar"
-                                width="100%"
-                                height="300px"
+                                width="95%"
+                                height="400px"
                                 data={val6}
                                 options={options6}
                             />
                         </div>
 
-                        <div className='part4'>
+                        <div className='part1'>
                             <Chart
                                 chartType="BubbleChart"
                                 width="100%"
@@ -231,26 +238,26 @@ function DashBoard() {
                             />
                         </div>
 
-                        <div className='part2'>
+                        <div className='part1'>
                             <Chart
                                 // className='leftpart2'
-                                chartType="Bar"
-                                width="100%"
-                                height="300px"
+                                chartType="BarChart"
+                                width="95%"
+                                height="400px"
                                 data={val2}
                                 options={options2}
                             />
 
                             <Chart
                                 chartType="BarChart"
-                                width="100%"
-                                height="300px"
+                                width="95%"
+                                height="400px"
                                 data={val3}
                                 options={options3}
                             />
                         </div>
 
-                        <div className='part3'>
+                        <div className='part1'>
 
                             <Chart
                                 chartType="Scatter"
