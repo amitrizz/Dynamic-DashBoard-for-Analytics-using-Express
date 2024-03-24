@@ -175,7 +175,7 @@ function DashBoard() {
         const fetchData = async () => {
             try {
                 // Send the request with the configured headers
-                const response = await axios.get(`http://localhost:7000/api/dashboard/loaddata`);
+                const response = await axios.get(`https://simpleapi-1av1.onrender.com/api/dashboard/loaddata`);
 
                 console.log(response);
                 avgintlikerel(response.data.data)

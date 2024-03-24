@@ -15,7 +15,7 @@ function FilterBoard() {
             // console.log('Selected department:', department);
             try {
 
-                const res = await axios.get(`http://localhost:7000/api/dashboard/showdata`);
+                const res = await axios.get(`https://simpleapi-1av1.onrender.com/api/dashboard/showdata`);
 
                 // console.log(res.data.data);
                 setLoad(true)
@@ -35,7 +35,7 @@ function FilterBoard() {
         setLoad(false);
         try {
 
-            const res = await axios.post(`http://localhost:7000/api/dashboard/filter`, { filtertype: filterType, searchkey: searchKey });
+            const res = await axios.post(`https://simpleapi-1av1.onrender.com/api/dashboard/filter`, { filtertype: filterType, searchkey: searchKey });
 
             console.log(res.data.data);
             setData(res.data.data)
