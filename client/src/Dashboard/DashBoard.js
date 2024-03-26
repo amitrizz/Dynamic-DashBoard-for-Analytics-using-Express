@@ -205,7 +205,6 @@ function DashBoard() {
     }, []);
     return (
         <div className='DashBoard'>
-            <Navbar />
             <div className='Dashbody'>
                 {fileContent ?
                     <div className='dashcontent'>

@@ -68,7 +68,6 @@ function FilterBoard() {
 
     return (
         <div className='filterBoard'>
-            <Navbar />
             <div className='filterbody'>
 
                 {
