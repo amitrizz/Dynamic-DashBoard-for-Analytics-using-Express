@@ -132,7 +132,11 @@ class DashBoardController {
 
     static showData = async (req, res) => {
         try {
-            const results = await DataModel.find();
+            const noOfPage=30;
+            const {skip}=req.body;
+            const nextresult=(skip-1)*noOfPage
+            // console.log(skip);
+            const results = await DataModel.find().skip(nextresult).limit(noOfPage);
             // console.log(results);
             res.send({ data: "data" ,data:results});
             // return res.status(201).send({ sataus: "success", message: " successfully registered", user: saved_user, token: token });

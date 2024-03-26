@@ -9,14 +9,14 @@ function FilterBoard() {
     const [searchKey, setsearchKey] = useState("");
     const [load, setLoad] = useState(false);
     const [data, setData] = useState([]);
+    const [skip, setSkip] = useState(1);
 
     useEffect(() => {
         const showdata = async () => {
             // console.log('Selected department:', department);
             try {
-
-                const res = await axios.get(`https://simpleapi-1av1.onrender.com/api/dashboard/showdata`);
-
+                console.log(skip);
+                const res = await axios.post(`https://simpleapi-1av1.onrender.com/api/dashboard/showdata`, { skip: skip });
                 // console.log(res.data.data);
                 setLoad(true)
                 setData(res.data.data)
@@ -28,6 +28,19 @@ function FilterBoard() {
         showdata();
 
     }, [])
+
+    const AddMoreDataToTable = async() => {
+        try {
+            console.log(skip);
+            const res = await axios.post(`https://simpleapi-1av1.onrender.com/api/dashboard/showdata`,{skip:skip+1});
+            setSkip(skip + 1);
+            // console.log(res.data.data);
+            // setLoad(true)
+            setData(data=>[...data,...res.data.data])
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
 
     const handleFieldCheckButtonClick = async () => {
         // Here, you can perform any action you want to do when the button is clicked
@@ -113,6 +126,7 @@ function FilterBoard() {
                                         </tbody>
                                     </table>
                                 </div>
+                                <button onClick={AddMoreDataToTable}>Add more</button>
                             </div>
                         )
                         :
