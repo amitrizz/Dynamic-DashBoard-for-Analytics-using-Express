@@ -229,7 +229,7 @@ function DashBoard() {
 
                         <div className='part1'>
                             <Chart
-                                chartType="Line"
+                                chartType="BubbleChart"
                                 width="100%"
                                 height="400px"
                                 data={val5}
